@@ -1,0 +1,25 @@
+{
+  "dependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/plugin-syntax-do-expressions": "^7.0.0",
+    "@babel/types": "^7.1.3"
+  },
+  "name": "babel-plugin-monadic-do",
+  "description": "Hijacks `do`/`while` statements with bitwise left shift (`<<`) to implement the `for`/`yield` syntax we all know and love :heart: from [scala](https://docs.scala-lang.org/tutorials/FAQ/yield.html).",
+  "version": "0.0.1",
+  "main": "src/index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pfgray/babel-plugin-monadic-do.git"
+  },
+  "author": "Paul Gray (@PaulGrizzay)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pfgray/babel-plugin-monadic-do/issues"
+  },
+  "homepage": "https://github.com/pfgray/babel-plugin-monadic-do#readme"
+}
