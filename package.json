@@ -6,7 +6,7 @@
   },
   "name": "babel-plugin-monadic-do",
   "description": "Hijacks `do`/`while` statements with bitwise left shift (`<<`) to implement the `for`/`yield` syntax we all know and love :heart: from [scala](https://docs.scala-lang.org/tutorials/FAQ/yield.html).",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "src/index.js",
   "devDependencies": {},
   "scripts": {
