@@ -6,13 +6,11 @@ module.exports = function({types: t}){
     inherits: syntaxDoExpressions.default,
     visitor: {
       DoExpression: function(path) {
-        // find the expressions that are '<<'
-        const binds = path.node.body.body.filter(e => {
-          return e.expression && e.expression.operator === '<<'; //true //e.expression
-        });
+        // count the expressions that are '<<'
+        const bindCount = path.node.body.body.filter(isBind).length;
 
         // todo: fail if first expr is not bind expr
-        path.replaceWith((formatChain(t, binds.length, path.node.body.body))[0]);
+        path.replaceWith((formatChain(t, bindCount, path.node.body.body))[0]);
       }
     }
   };
@@ -21,7 +19,7 @@ module.exports = function({types: t}){
 function formatChain(t, bindsLeft, oldBody) {
   const [currExpr, ...restExpr] = oldBody;
   if(isBind(currExpr)) {
-    const memberFunc = bindsLeft === 0 ? "map" : "chain";
+    const memberFunc = bindsLeft === 1 ? "map" : "chain";
     const {left, right} = currExpr.expression;
     return [t.returnStatement(t.callExpression(t.memberExpression(right, t.identifier(memberFunc)), [
       t.arrowFunctionExpression([left], t.blockStatement(formatChain(t, bindsLeft - 1, restExpr)))
